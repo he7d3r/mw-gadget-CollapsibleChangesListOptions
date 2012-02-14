@@ -1,7 +1,7 @@
 /**
  * Make recent changes and watchlist options collapsible
  *
- * @source: http://www.mediawiki.org/wiki/Snippets/Collapsible_ChangesList_options
+ * @source: [[mw:Snippets/Collapsible ChangesList options]]
  * @rev: 2
  */
 if ( $.inArray( mw.config.get( 'wgCanonicalSpecialPageName' ), ['Watchlist', 'Recentchanges']) != -1 ) {
