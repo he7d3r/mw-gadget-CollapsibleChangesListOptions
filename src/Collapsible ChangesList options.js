@@ -1,7 +1,7 @@
 /**
  * Make recent changes and watchlist options collapsible
  * @source: [[mw:Snippets/Collapsible ChangesList options]]
- * @rev: 2
+ * @rev: 3
  * @tracking: [[Special:GlobalUsage/User:Helder.wiki/Tools/Collapsible ChangesList options.js]] ([[File:User:Helder.wiki/Tools/Collapsible ChangesList options.js]])
  */
 /*jslint browser: true, white: true*/
@@ -9,8 +9,9 @@
 ( function ( mw, $ ) {
 'use strict';
 
-if ( $.inArray( mw.config.get( 'wgCanonicalSpecialPageName' ), ['Watchlist', 'Recentchanges']) !== -1 ) {
-	var $options = $( '#mw-watchlist-options, .rcoptions' ),
+if ( $.inArray( mw.config.get( 'wgCanonicalSpecialPageName' ), ['Watchlist', 'Recentchanges']) != -1 ) {
+	mw.hook( 'wikipage.content' ).add( function ( $content ) {
+	var $options = $content.find( '#mw-watchlist-options, .rcoptions' ),
 		$legend = $options.find( 'legend' );
 	if ( mw.config.get( 'wgCanonicalSpecialPageName' ) === 'Watchlist' ) {
 		$options.contents().filter( function() {
@@ -24,14 +25,16 @@ if ( $.inArray( mw.config.get( 'wgCanonicalSpecialPageName' ), ['Watchlist', 'Re
 
 	$legend.wrapInner( '<a href="#" />' )
 		.click( function( e ) {
-			e.preventDefault(); // avoid jumping to the top (href=#)
-
+			// Avoid jumping to the top (href=#)
+			e.preventDefault();
 			$( '#mw-options-wrapper' ).toggle( 'fast' );
-
 		} )
 		.add( '#mw-watchlist-options-intro' )
-		.prependTo( $options ); // Put the legend and intro outside the wrapper
-	$( '#mw-options-wrapper' ).hide( ); // Hide by default
+		// Put the legend and intro outside the wrapper
+		.prependTo( $options );
+	// Hide by default
+	$( '#mw-options-wrapper' ).hide( );
+	} );
 }
 
 }( mediaWiki, jQuery ) );
