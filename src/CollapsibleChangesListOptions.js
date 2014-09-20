@@ -2,7 +2,6 @@
  * Make recent changes and watchlist options collapsible
  * @source: [[mw:Snippets/Collapsible ChangesList options]]
  * @rev: 3
- * @tracking: [[Special:GlobalUsage/User:Helder.wiki/Tools/Collapsible ChangesList options.js]] ([[File:User:Helder.wiki/Tools/Collapsible ChangesList options.js]])
  */
 /*jslint browser: true, white: true*/
 /*global jQuery, mediaWiki */
