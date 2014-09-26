@@ -1,14 +1,12 @@
 /**
  * Make recent changes and watchlist options collapsible
  * @source: [[mw:Snippets/Collapsible ChangesList options]]
- * @rev: 3
+ * @rev: 4
  */
-/*jslint browser: true, white: true*/
-/*global jQuery, mediaWiki */
 ( function ( mw, $ ) {
 'use strict';
 
-if ( $.inArray( mw.config.get( 'wgCanonicalSpecialPageName' ), ['Watchlist', 'Recentchanges']) != -1 ) {
+if ( $.inArray( mw.config.get( 'wgCanonicalSpecialPageName' ), ['Watchlist', 'Recentchanges']) !== -1 ) {
 	mw.hook( 'wikipage.content' ).add( function ( $content ) {
 		var $options = $content.find( '#mw-watchlist-options, .rcoptions' ),
 			$legend = $options.find( 'legend' );
